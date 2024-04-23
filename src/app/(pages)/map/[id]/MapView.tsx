@@ -457,7 +457,7 @@ const MapView = ({
                   <div className="flex sm:hidden w-10 justify-start text-center font-bold flex-grow-0">
                     {isFull == '100vh' && <GoBackButton />}
                   </div>
-                  <div className="flex justify-center mr-10 flex-grow">
+                  <div className="sm:hidden flex justify-center mr-10 flex-grow">
                     {isShared ? '공유 지도' : '개인 지도'}
                   </div>
                 </div>
@@ -506,7 +506,7 @@ const MapView = ({
               </div>
               <div
                 id="map"
-                className={`${isFull !== `100vh` ? 'rounded-lg' : ''} transition-transform duration-500 ${showArticle ? 'translate-x-[26vw]' : '-translate-x-0'}`}
+                className={`${isFull !== `100vh` ? 'rounded-lg' : ''} transition-transform duration-500 ${showArticle && 'lg:translate-x-[26vw]'}`}
                 style={{
                   width: '100%',
                   height: mapHeight,
@@ -522,7 +522,7 @@ const MapView = ({
                     </button>
                     {/* 상세정보 슬라이드 */}
                     <div
-                      className={`absolute bg-white left-0  px-4 pt-8 h-full w-[26vw] hover:text-[#F66464] hover:bg-white font-bold z-20 flex flex-col gap-y-2 transition-transform duration-500 ${showArticle ? 'translate-x-[0vw]' : '-translate-x-full'}`}
+                      className={`absolute bg-white left-0  px-4 pt-8 h-full w-[26vw] sm:w-full hover:text-[#F66464] hover:bg-white font-bold z-20 sm:z-50 flex flex-col gap-y-2 transition-transform duration-500 ${showArticle ? 'sm:translate-y-[10vh] lg:translate-x-[0vw]' : 'sm:translate-y-full lg:-translate-x-full'}`}
                     >
                       <div className="flex justify-between ">
                         <div className="text-xl">{selectedPlace?.name}</div>
@@ -571,7 +571,8 @@ const MapView = ({
                         <Image
                           src={placeImage}
                           alt="articleImg"
-                          className="w-full h-[200px] object-contain pt-4"
+                          className="w-full h-[200px] cover pt-4"
+                          
                         />
                         {/* TODO::아티클 제목, 내용 , 좋아요 추가 */}
                       </div>
